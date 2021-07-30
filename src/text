@@ -1,0 +1,129 @@
+import React from 'react';
+import PropTypes from 'prop-types'; 
+import classesTicket from './ticket.module.scss';
+import  logoS7 from '../images/s7-logo.svg';
+
+function Ticket({ticket}) {
+    const {price/* , carrier, segments */} = ticket;
+   
+
+    console.log(ticket)
+
+    const originDestination = `MOW - HKT`;
+    const timeDepartureArrival = `10:45 - 08:00`;
+    const timeTravel = '21ч 45м';
+    const NumberTransfers  = '2';
+
+    return (
+        <div className={classesTicket.information}>
+            <div className={classesTicket['information__price-logo']}>
+                <div className={classesTicket.price}>
+                    {`${price} Р`} 
+                </div>
+                <div className={classesTicket.logo}>
+                <img src={logoS7} alt='logo S7' />
+                </div>
+            </div>
+            <div className={classesTicket['information__routes-data']}>
+                    <div className={classesTicket['origin-destination-time']}>
+                        <div>
+                            {originDestination}
+                        </div>
+                        <div>
+                            {timeDepartureArrival}
+                        </div>
+                    </div>
+                    <div className={classesTicket.duration}>
+                        <div>
+                            В ПУТИ
+                        </div>
+                        <div>
+                            {timeTravel} 
+                        </div>
+                    </div>
+                    <div className={classesTicket.transfers}>
+                        <div>
+                            {NumberTransfers} ПЕРЕСАДКИ
+                            </div>
+                        <div>
+                            HKJ, JNB
+                        </div>
+                    </div>
+            </div>
+            <div className={classesTicket['information__routes-data']}>
+                    <div className={classesTicket['origin-destination-time']}>
+                        <div>
+                            {originDestination}   
+                        </div>
+                        <div>
+                            {timeDepartureArrival}
+                        </div>
+                    </div>
+                    <div className={classesTicket.duration}>
+                        <div>
+                            В ПУТИ
+                        </div>
+                        <div>
+                            {timeTravel}
+                        </div>
+                    </div>
+                    <div className={classesTicket.transfers}>
+                        <div>
+                            {NumberTransfers} ПЕРЕСАДКИ
+                            </div>
+                        <div>
+                            HKJ, JNB
+                        </div>
+                    </div>
+            </div>
+        </div>
+    )
+}
+
+const informationRoutesData = segments.map(item => {
+     /* 0: {origin: "MOW", destination: "HKT", date: "2021-08-08T15:41:00.000Z", stops: Array(0), duration: 1747} */
+    const {origin, destination, date, stop, duration} = item;
+
+    const timeTravel = `${Math.floor(duration/60)} ч - ${Math.ceil(duration % 60)} мин`;
+    const timeStart = Date.now()(date);
+    const timeEnd = `${Math.floor((Date.now()(date) / 60000 + timeTravel)/60)} ч - ${Math.ceil((Date.now()(date) / 60000 + timeTravel) % 60)} мин`;
+
+    return (
+        <div className={classesTicket['information__routes-data']}>
+                    <div className={classesTicket['origin-destination-time']}>
+                        <div>
+                            {origin} - {destination}
+                        </div>
+                        <div>
+                            {timeStart} - {timeEnd}
+                        </div>
+                    </div>
+                    <div className={classesTicket.duration}>
+                        <div>
+                            В ПУТИ
+                        </div>
+                        <div>
+                            {timeTravel} 
+                        </div>
+                    </div>
+                    <div className={classesTicket.transfers}>
+                        <div>
+                            {stop[0]}, {stop[1]} ПЕРЕСАДКИ
+                            </div>
+                        <div>
+                            HKJ, JNB
+                        </div>
+                    </div>
+            </div>
+    )
+})
+
+Ticket.defaultProps = {
+    ticket: {},
+}
+
+Ticket.propTypes = {
+    ticket: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array])),
+}
+
+export default Ticket;

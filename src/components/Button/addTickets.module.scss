@@ -1,0 +1,33 @@
+.addTickets {
+    transition: all .5s;
+    position: relative;
+    margin: 20px auto;
+    width: 502px;
+    height: 50px;
+    align-items: center;
+    background: #2196F3;
+    border-radius: 5px;
+    border: 1px solid #2196F3;
+    vertical-align: middle;
+    cursor: pointer;
+  
+    span {
+      margin: 15px auto;
+      display: block;
+      width: 462px;
+      text-align: center;
+      
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+  
+    &:hover {
+      transform: scale(1.03);
+    }
+  }

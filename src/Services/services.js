@@ -1,24 +1,25 @@
 import { Component } from "react";
 
 export default class Services extends Component {
-    
-    async getResourse(url, options) {
-        const response = await fetch(url, options);
 
-        if(!response.ok) {
-            return new Error(`Could not fetch ${url} received ${response.status}`)
-        };
+    API_BASE = 'https://front-test.beta.aviasales.ru/';
 
+    getSearchId = async () => {
+        const response = await fetch(`${this.API_BASE}search`);
         const body = await response.json();
-
+        
         return body;
-    };
+    }
 
-    getSearchId() {
-        return this.getResourse(`https://front-test.beta.aviasales.ru/search`);
-    };
+    getTickets = async (searchId) => {
+        try {
+            const response = await fetch(`${this.API_BASE}tickets?searchId=${searchId}`);
+            const { tickets, stop} = await response.json();
 
-    getTickets(searchId) {
-        return this.getResourse(`https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`);
-    };
+            return [tickets, stop];
+
+        } catch (error) { 
+            return [[], false];
+        }
+    }
 }

@@ -1,0 +1,49 @@
+.information {
+  width: 502px;
+  height: 184px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-top: 20px;
+
+  .information__price-logo {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 20px 20px 20px;
+
+    .price {
+      font-size: 24px;
+      line-height: 24px;
+      color: #2196f3;
+      font-family: 'Open Sans';
+      font-weight: 600;
+    }
+  }
+
+  .information__routes-data {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 20px 10px 20px;
+
+    .origin-destination-time div:first-child,
+    .duration div:first-child,
+    .transfers div:first-child {
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #a0b0b9;
+    }
+
+    .origin-destination-time div:last-child,
+    .duration div:last-child,
+    .transfers div:last-child {
+      font-size: 14px;
+      line-height: 21px;
+      color: #4a4a4a;
+      font-weight: 600;
+    }
+  }
+}
