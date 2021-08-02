@@ -15,8 +15,8 @@ const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
       // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
     }) : compose;
-
-const loggerMiddleware = store => next => action => { /* Любые экшены, отправленные в экземпляр стора, будут проходить через loggerMiddleware и crashReporter: */
+/* Любые экшены, отправленные в экземпляр стора, будут проходить через loggerMiddleware и crashReporter: */
+/* const loggerMiddleware = store => next => action => { 
   console.log('dispatching', action);
   const result = next(action);
   console.log("next state", store.getState());
@@ -31,9 +31,9 @@ const crashReporter = store => next => action => {
     console.log("next state", store.getState());
     throw err;
   }
-}
+} */
 
-const store = createStore(reducer, composeEnhancers(applyMiddleware(reduxThunk, loggerMiddleware, crashReporter))); /* создаем дерево состояний и откроем доступ всему приложению */
+const store = createStore(reducer, composeEnhancers(applyMiddleware(reduxThunk/* , loggerMiddleware, crashReporter */))); /* создаем дерево состояний и откроем доступ всему приложению */
 
 ReactDOM.render(
   <Provider store={store}> {/* Доступ к store будет иметь все приложение. Кроме того он будет обновлять приложение при обновлении store. */}

@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
+import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
 import classesTicket from './ticket.module.scss';
 
 function Ticket({ticket}) {
+
     const {price, carrier, segments } = ticket;
+
+    const newPrice = `${String(price).substr(0, 2)} ${String(price).substr(2)}`;
 
     const informationRoutesData = segments.map(item => {
 
@@ -41,7 +45,7 @@ function Ticket({ticket}) {
     }
 
     return (
-        <div className={classesTicket['information__routes-data']}>
+        <div className={classesTicket['information__routes-data']} key={uuidv4()}>
             <div className={classesTicket['origin-destination-time']}>
                 <div>
                     {origin} - {destination}
@@ -71,10 +75,12 @@ function Ticket({ticket}) {
 })
 
     return (
-        <div className={classesTicket.information}>
+        <div className={classesTicket.information} key={uuidv4()}>
             <div className={classesTicket['information__price-logo']}>
                 <div className={classesTicket.price}>
-                    {`${price} Р`} 
+                    <span>
+                        {`${newPrice} Р`}     
+                    </span>
                 </div>
                 <div className={classesTicket.logo}>
                 <img src={`http://pics.avs.io/99/36/${carrier}.png`} alt='logoAirline ' />
@@ -86,11 +92,10 @@ function Ticket({ticket}) {
 }
 
 Ticket.defaultProps = {
-    ticket: {},
 }
 
 Ticket.propTypes = {
-    ticket: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array])),
+    ticket: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array])).isRequired,
 }
 
 export default Ticket;

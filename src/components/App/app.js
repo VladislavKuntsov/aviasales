@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Alert } from 'antd';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types'; 
 import { connect } from 'react-redux';
@@ -12,12 +13,14 @@ import TicketsList from '../Tickets-list/tickets-list';
 import Serviсes from '../../Services/services';
 import AddTickets from '../Button/addTickets';
 
+
 const AviasalesDBService = new Serviсes;
 
-function App({setSearchId, setTickets, setIsLoading, searchId, tickets, isLoading}) {
+function App({setSearchId, setTickets, setIsLoading, searchId, tickets, isLoading, checkboxFilters}) {
 
   const stop = tickets[1];
   const ButtonAddTickets = isLoading ? <AddTickets /> : null;
+  const isCheckboxActive = checkboxFilters.filter(item => item.active).length;
 
   useEffect(() => {
     AviasalesDBService.getSearchId().then(body => setSearchId(body.searchId))
@@ -29,6 +32,13 @@ function App({setSearchId, setTickets, setIsLoading, searchId, tickets, isLoadin
     }
     if(stop) setIsLoading(true) 
   }, [setTickets, setIsLoading, searchId, stop, tickets])
+
+  const styleAlert = {
+    'margin-top': '36px',
+    'font-size': '20px',
+    'width': '502px',
+    'text-align': "center",
+  }
 
   return (
     <div>
@@ -42,7 +52,7 @@ function App({setSearchId, setTickets, setIsLoading, searchId, tickets, isLoadin
         <div>
           <Switch/>
           <TicketsList/>
-          {ButtonAddTickets}
+          {isCheckboxActive === 0 ? <Alert message="Для успешного поиска выберите колличество пересадок" type="info" style={styleAlert}/> : ButtonAddTickets}
         </div> 
       </div>
     </div> 
@@ -60,12 +70,14 @@ App.propTypes = {
   searchId: PropTypes.string,
   tickets: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.array, PropTypes.bool])).isRequired,
   isLoading: PropTypes.bool.isRequired,
+  checkboxFilters: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 const mapStateToProps = (state) => ({
   tickets: state.tickets,
   searchId: state.searchId,
   isLoading: state.isLoading,
+  checkboxFilters: state.checkboxFilters,
 })
 
 const mapDispatchToProps = (dispatch) => {

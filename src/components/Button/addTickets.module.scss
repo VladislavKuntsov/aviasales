@@ -1,4 +1,5 @@
 .addTickets {
+  
     transition: all .5s;
     position: relative;
     margin: 20px auto;
@@ -12,12 +13,11 @@
     cursor: pointer;
   
     span {
+      font-family: 'Open Sans', sans-serif;
       margin: 15px auto;
       display: block;
       width: 462px;
       text-align: center;
-      
-      font-family: Open Sans;
       font-style: normal;
       font-weight: 600;
       font-size: 12px;

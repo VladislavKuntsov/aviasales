@@ -12,19 +12,27 @@
     display: flex;
     justify-content: space-between;
     margin: 20px 20px 20px 20px;
+    align-items: center;
 
     .price {
       font-size: 24px;
       line-height: 24px;
       color: #2196f3;
-      font-family: 'Open Sans';
-      font-weight: 600;
+      height: 24px;
+
+
+      & span {
+        display:inline-block;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600; 
+        height: 24px;
+      }
     }
   }
 
   .information__routes-data {
     display: flex;
-    justify-content: space-between;
     margin: 0px 20px 10px 20px;
 
     .origin-destination-time div:first-child,
@@ -44,6 +52,14 @@
       line-height: 21px;
       color: #4a4a4a;
       font-weight: 600;
+    }
+
+    .origin-destination-time, .duration, .transfers {
+      width: 141px;
+      text-align: start;
+    }
+    .duration, .transfers {
+      margin-left: 20px; 
     }
   }
 }
