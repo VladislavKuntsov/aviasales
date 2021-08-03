@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types'; 
-import * as actions from '../../actions';
+import * as actions from '../../Store/actions';
 import classesAddTickets from './addTickets.module.scss';
 
 const AddTickets = ({numberOfTicketsDisplayed, setNumberOfTicketsDisplayed, tickets}) => {

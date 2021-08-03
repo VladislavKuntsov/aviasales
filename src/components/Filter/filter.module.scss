@@ -59,11 +59,11 @@
         position: absolute;
         left: 0;
         top: 0;
-        background: url(../images/checkboxOff.svg) 0 0 no-repeat;
+        background: url(../../Images/checkboxOff.svg) 0 0 no-repeat;
     }
 
     label input[type=checkbox]:checked + span:before {
-        background-image: url(../images/checkboxOn.svg);
+        background-image: url(../../Images/checkboxOn.svg);
     }
 
     label:hover {

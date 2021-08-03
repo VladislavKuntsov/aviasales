@@ -5,7 +5,7 @@ import './index.module.scss';
 import { createStore, applyMiddleware, compose } from 'redux'; /* Создает хранилище Redux, в котором хранится дерево состояний приложения. Должен быть только одно хранилище. */
 import { Provider } from 'react-redux'; /* Компонент делает Redux доступным для всех вложенных компонентов, которым необходим доступ к хранилищу Redux. */
 import reduxThunk from 'redux-thunk';
-import reducer from './reducer'; /* Функция, предназначенная для изменения дерева состояний */
+import reducer from './Store/reducer'; 
 
 import App from './components/App/app';
 

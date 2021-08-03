@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';   
 import {connect} from 'react-redux' /* функция высшего порядка, создает обертку компонента */
 import {bindActionCreators} from 'redux';
-import * as actions from '../../actions';
+import * as actions from '../../Store/actions';
 import classesSwitch from './switch.module.scss';
 
 function Switch({sortingTickets, buttonSorting}) {

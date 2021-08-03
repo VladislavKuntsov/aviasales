@@ -3,10 +3,10 @@ import { Alert } from 'antd';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types'; 
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import * as actions from '../../Store/actions';
 import classesApp from './app.module.scss';
 
-import logoAviasale from '../images/logo-plane.svg';
+import logoAviasale from '../../Images/logo-plane.svg';
 import Switch from '../Switch/switch';
 import Filter from '../Filter/filter';
 import TicketsList from '../Tickets-list/tickets-list';
@@ -28,7 +28,7 @@ function App({setSearchId, setTickets, setIsLoading, searchId, tickets, isLoadin
 
   useEffect(() => {
     if(searchId && !stop) {
-      AviasalesDBService.getTickets(searchId).then(body => setTickets(body))
+      AviasalesDBService.getTickets(searchId).then(setTickets)
     }
     if(stop) setIsLoading(true) 
   }, [setTickets, setIsLoading, searchId, stop, tickets])
