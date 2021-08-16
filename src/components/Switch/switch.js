@@ -7,20 +7,26 @@ import classesSwitch from './switch.module.scss';
 
 function Switch({sortingTickets, buttonSorting}) {
 
+    const switchButtons = [
+        {className: 'cheap' , text: 'Самый дешевый', active: buttonSorting === 'cheap' ? 'active' : 'null' },
+        {className: 'fast' , text: 'Самый быстрый', active: buttonSorting === 'fast' ? 'active' : 'null' },
+        {className: 'optimal' , text: 'Оптимальный', active: buttonSorting === 'optimal' ? 'active' : 'null' },
+    ]
+
     return (
         <div className={classesSwitch.button} >
-            <div className={`${classesSwitch.button__cheap} ${buttonSorting === 'cheap' ? classesSwitch.active : null}`} onClick={() => sortingTickets("cheap")} role="presentation">
-                <span>Самый дешевый</span>
-            </div>
-            <div className={`${classesSwitch.button__fast} ${buttonSorting === 'fast' ? classesSwitch.active : null}`} onClick={() => sortingTickets('fast')} role="presentation">
-                <span>Самый быстрый</span>
-            </div>
-            <div className={`${classesSwitch.button__optimal} ${buttonSorting === 'optimal' ? classesSwitch.active : null}`} onClick={ () => sortingTickets('optimal')} role="presentation">
-                   <span>Оптимальный</span>
-            </div>
+            <SwitchButtonAll switchButtons={switchButtons} sortingTickets={sortingTickets} buttonSorting={buttonSorting} />
         </div>
     )
 }
+
+const SwitchButtonAll = ({sortingTickets, switchButtons}) => (
+    switchButtons.map(({className, text, active}) => (
+        <div className={`${classesSwitch[`button__${className}`]} ${classesSwitch[active]}`} onClick={() => sortingTickets(className)} role="presentation">
+            <span>{text}</span>
+        </div>    
+    ))
+)
 
 Switch.defaultProps = {
     sortingTickets: () => {},

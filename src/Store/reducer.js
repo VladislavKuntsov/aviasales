@@ -4,11 +4,11 @@ const initialState = {
     numberOfTicketsDisplayed: 5,
     buttonSorting: 'cheap',
     checkboxFilters: [
-        {name: 'transfersAll', active: true, id: 1},
-        {name: 'transfersWithout', value: 0, active: true, id: 2},
-        {name: 'transfersOne', value: 1, active: true, id: 3},
-        {name: 'transfersTwo', value: 2, active: true, id: 4},
-        {name: 'transfersThree', value: 3, active: true, id: 5}, 
+        {name: 'transfersAll', text: 'Все', active: true, id: 1},
+        {name: 'transfersWithout', text: 'Без пересадок', value: 0, active: true, id: 2},
+        {name: 'transfersOne', text: '1 пересадка', value: 1, active: true, id: 3},
+        {name: 'transfersTwo', text: '2 пересадки', value: 2, active: true, id: 4},
+        {name: 'transfersThree', text: '3 пересадки', value: 3, active: true, id: 5}, 
     ],
     isLoading: false,
 }

@@ -21,29 +21,19 @@ function Filter({ filteringTickets, checkboxFilters}) {
     return (
         <div className={moduleFilter.transfers}>
             <h3>Колличество пересадок</h3>
-            <label className={moduleFilter.transfers__all} >
-                <input type="checkbox" checked={findCheckedStatus('transfersAll')} data-name='transfersAll' onChange={onFilterChange}/>
-                <span>Все</span>
-            </label>
-            <label className={moduleFilter.transfers__without} >
-                <input type="checkbox" checked={findCheckedStatus('transfersWithout')} data-name='transfersWithout' onChange={onFilterChange}/>
-                <span>Без пересадок</span>
-            </label>
-            <label className={moduleFilter.transfers__one}>
-                <input type="checkbox" checked={findCheckedStatus('transfersOne')} data-name='transfersOne' onChange={onFilterChange}/>
-                <span>1 пересадка</span>
-            </label>
-            <label className={moduleFilter.transfers__two} >
-                <input type="checkbox" checked={findCheckedStatus('transfersTwo')} data-name='transfersTwo' onChange={onFilterChange}/>
-                <span>2 пересадки</span>
-            </label>
-            <label className={moduleFilter.transfers__three} >
-                <input type="checkbox" checked={findCheckedStatus('transfersThree')} data-name='transfersThree' onChange={onFilterChange}/>
-                <span>3 пересадки</span>
-            </label>
+            <FilterInputAll checkboxFilters={checkboxFilters} findCheckedStatus={findCheckedStatus} onFilterChange={onFilterChange}/>
         </div>
     )
 }
+
+const FilterInputAll = ({checkboxFilters, findCheckedStatus, onFilterChange}) => (
+    checkboxFilters.map( ({name, text}) => (
+        <label className={moduleFilter.name}>
+            <input type="checkbox" checked={findCheckedStatus(name)} data-name={name} onChange={onFilterChange}/>
+            <span>{text}</span>
+        </label>    
+    ))
+)
 
 Filter.defaultProps = {
     filteringTickets: () => {},
