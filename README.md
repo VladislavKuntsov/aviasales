@@ -1,1 +1,1 @@
-✅ Production: https://aviasales-sigma.vercel.app
+✅ Production: https://aviasales-vladislavkuntsov.vercel.app
