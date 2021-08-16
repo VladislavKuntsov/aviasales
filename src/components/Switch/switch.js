@@ -8,9 +8,9 @@ import classesSwitch from './switch.module.scss';
 function Switch({sortingTickets, buttonSorting}) {
 
     const switchButtons = [
-        {className: 'cheap' , text: 'Самый дешевый', active: buttonSorting === 'cheap' ? 'active' : 'null' },
-        {className: 'fast' , text: 'Самый быстрый', active: buttonSorting === 'fast' ? 'active' : 'null' },
-        {className: 'optimal' , text: 'Оптимальный', active: buttonSorting === 'optimal' ? 'active' : 'null' },
+        {className: 'cheap' , text: 'Самый дешевый', active: buttonSorting === 'cheap' ? 'active' : 'null', id: 11 },
+        {className: 'fast' , text: 'Самый быстрый', active: buttonSorting === 'fast' ? 'active' : 'null', id: 22 },
+        {className: 'optimal' , text: 'Оптимальный', active: buttonSorting === 'optimal' ? 'active' : 'null', id: 33 },
     ]
 
     return (
@@ -21,8 +21,8 @@ function Switch({sortingTickets, buttonSorting}) {
 }
 
 const SwitchButtonAll = ({sortingTickets, switchButtons}) => (
-    switchButtons.map(({className, text, active}) => (
-        <div className={`${classesSwitch[`button__${className}`]} ${classesSwitch[active]}`} onClick={() => sortingTickets(className)} role="presentation">
+    switchButtons.map(({className, text, active, id}) => (
+        <div className={`${classesSwitch[`button__${className}`]} ${classesSwitch[active]}`} key={id} onClick={() => sortingTickets(className)} role="presentation">
             <span>{text}</span>
         </div>    
     ))

@@ -27,8 +27,8 @@ function Filter({ filteringTickets, checkboxFilters}) {
 }
 
 const FilterInputAll = ({checkboxFilters, findCheckedStatus, onFilterChange}) => (
-    checkboxFilters.map( ({name, text}) => (
-        <label className={moduleFilter.name}>
+    checkboxFilters.map( ({name, text, id}) => (
+        <label className={moduleFilter.name} key={id}>
             <input type="checkbox" checked={findCheckedStatus(name)} data-name={name} onChange={onFilterChange}/>
             <span>{text}</span>
         </label>    
